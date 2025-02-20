@@ -8,6 +8,10 @@ body {
   overflow-x: hidden;
 }
 
+h2 {
+  font-family: "general", sans-serif;
+}
+
 @layer base {
   :root {
     --color-blue-50: #DFDFF0;
