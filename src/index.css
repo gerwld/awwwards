@@ -96,6 +96,13 @@ h2 {
   }
 }
 
+#video-frame {
+  will-change: clip-path, transform, border-radius;
+  contain: strict; /* Optimizes rendering */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 
 @layer utilities {
   .border-hsla {

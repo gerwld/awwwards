@@ -63,40 +63,27 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.set("#video-frame", {
-      clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
-      borderRadius: "0% 0% 40% 10%",
+      clipPath: "polygon(100% 100%, 0% 100%, 0% 100%, 100% 100%)",
+      // borderRadius: "0% 0% 40% 10%", 
+      willChange: "clip-path, transform, border-radius",
+      transform: "translateZ(0)", // Forces GPU rendering
     });
+  
     gsap.from("#video-frame", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      borderRadius: "0% 0% 0% 0%",
+      clipPath: "polygon(100% 100%, 0% 100%, 0% 0%, 100% 0%)",
+      // borderRadius: "0% 0% 0% 0%", 
       ease: "power1.inOut",
+      force3D: true, // Optimizes rendering in GSAP
       scrollTrigger: {
         trigger: "#video-frame",
         start: "center center",
         end: "bottom center",
-        scrub: true,
+        scrub: 0.5,
       },
     });
   });
-
-  useGSAP(()=> {
-    gsap.set("#video-frame", {
-         clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
-        borderRadius: "0 0 15% 20%"
-    })
-
-    gsap.from("#video-frame", {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-        borderRadius: "0 0 0 0",
-        ease: "power1.inOut",
-        scrollTrigger: {
-            trigger: '#video-frame',
-            start: "center center",
-            end:"bottom center",
-            scrub: true
-        }
-    })
-  })
+  
+  
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
